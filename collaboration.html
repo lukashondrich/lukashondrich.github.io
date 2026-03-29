@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaboration &mdash; Lukas Hondrich</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-name">Lukas Hondrich</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'); document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="collaboration.html" class="active">Collaboration</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="dphil-proposal.html">DPhil Proposal</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Collaboration</h1>
+    <p>Areas I'm actively exploring and open to developing with others.</p>
+
+    <div class="project">
+      <h2>Evidence Infrastructures for Working Conditions (Privacy-Preserving Measurement)</h2>
+      <p>Building tools that let distributed contributors generate system-level evidence about working conditions &mdash; without exposing individuals.</p>
+      <p><a href="https://www.openworkinghours.org/" target="_blank" rel="noopener"><strong>Open Working Hours</strong></a> is a native iOS app (offline-first) for tracking and reviewing working time with minimal daily effort, plus a backend that aggregates contributions into anonymized public statistics. It provides a privacy-by-design measurement layer.</p>
+      <div class="project-images">
+        <img src="assets/owh/status-dashboard.png" alt="Open Working Hours — status dashboard showing 14-day overview and overtime tracking">
+        <img src="assets/owh/calendar-week.png" alt="Open Working Hours — weekly calendar view with shift schedule">
+        <img src="assets/owh/location-setup.png" alt="Open Working Hours — location setup with geofence configuration">
+      </div>
+      <p>The system implements privacy safeguards including minimum group sizes, cell suppression, statistical noise calibration, and built-in export/deletion functionality.</p>
+    </div>
+
+    <div class="project">
+      <h2>Interfaces for Conversational Language Learning</h2>
+      <p>Prototyping educational tools that scaffold language learning with LLMs &mdash; integrating didactic structure, user modeling, and real-time system feedback.</p>
+      <p><a href="https://tingefrontend-production.up.railway.app/" target="_blank" rel="noopener"><strong>Tinge</strong></a> is a conversational LLM-based app that tailors conversational vocabulary exploration to learners' interests using adaptive memory and interactive visualizations.</p>
+      <div class="project-images project-images--wide">
+        <img src="assets/tinge/Bildschirmfoto 2025-07-23 um 09.24.57.png" alt="Tinge — vocabulary network visualization with conversation interface">
+        <img src="assets/tinge/Bildschirmfoto 2025-07-23 um 09.29.44.png" alt="Tinge — expanded word cloud with active Spanish conversation">
+      </div>
+      <p class="tech">Built with Three.js, JavaScript (Node/Express), deployed via Railway.</p>
+    </div>
+
+    <div class="project">
+      <h2>Human-Centered Evaluation</h2>
+      <p>Designing infrastructure and experimental setups to assess LLM behavior in context-specific tasks &mdash; with a focus on failure modes, interaction dynamics, and the mismatch between benchmark metrics and real-world use.</p>
+      <p><a href="https://levelethics.streamlit.app/" target="_blank" rel="noopener"><strong>Level Ethics</strong></a> is a prototype for red-teaming LLMs using diverse, crowdsourced user avatars, designed to surface failure modes and value clashes during early development stages.</p>
+      <p class="tech">Built with Python and Streamlit, deployed via Streamlit Cloud. An exploratory prototyping sprint in 2025 with Jie Liang Lin.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Lukas Hondrich</p>
+  </footer>
+</body>
+</html>

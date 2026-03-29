@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Still 5 — Voronoi Cells</title>
+  <style>
+    body { margin: 0; background: #FAF9F6; overflow: hidden; }
+    canvas { display: block; }
+    .label {
+      position: fixed; bottom: 20px; left: 20px;
+      font-family: 'Inter', sans-serif; font-size: 13px; color: #999;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="c"></canvas>
+  <div class="label">5/6 — Voronoi cells: angular, crystalline organic regions</div>
+  <script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const PARAMS = {
+      dotSize: 1.3,
+      dotColor: [140, 135, 125],
+      dotOpacityMax: 0.2,
+      cellSeedCount: 12,
+      dotDensity: 0.15, // dots per pixel area in active regions
+      edgeThickness: 40,
+    };
+
+    // Generate voronoi seed points
+    const seeds = [];
+    for (let i = 0; i < PARAMS.cellSeedCount; i++) {
+      seeds.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+      });
+    }
+
+    // Select which cells will be "active" (have dots)
+    const activeCells = new Set();
+    for (let i = 0; i < Math.floor(PARAMS.cellSeedCount * 0.4); i++) {
+      activeCells.add(Math.floor(Math.random() * PARAMS.cellSeedCount));
+    }
+
+    ctx.fillStyle = '#FAF9F6';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // For each pixel region, determine nearest seed and second-nearest
+    // Then draw dots near cell edges of active cells
+    const step = 4;
+    for (let x = 0; x < canvas.width; x += step) {
+      for (let y = 0; y < canvas.height; y += step) {
+        let min1 = Infinity, min2 = Infinity, nearest = -1;
+        for (let i = 0; i < seeds.length; i++) {
+          const d = Math.sqrt((x - seeds[i].x) ** 2 + (y - seeds[i].y) ** 2);
+          if (d < min1) { min2 = min1; min1 = d; nearest = i; }
+          else if (d < min2) { min2 = d; }
+        }
+
+        const edgeDist = min2 - min1;
+
+        if (activeCells.has(nearest) && edgeDist < PARAMS.edgeThickness) {
+          if (Math.random() > PARAMS.dotDensity) continue;
+
+          const edgeFactor = 1 - (edgeDist / PARAMS.edgeThickness);
+          const opacity = PARAMS.dotOpacityMax * edgeFactor * (0.5 + Math.random() * 0.5);
+
+          const px = x + (Math.random() - 0.5) * step;
+          const py = y + (Math.random() - 0.5) * step;
+
+          ctx.beginPath();
+          ctx.arc(px, py, PARAMS.dotSize * (0.8 + Math.random() * 0.4), 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${PARAMS.dotColor.join(',')}, ${opacity})`;
+          ctx.fill();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
