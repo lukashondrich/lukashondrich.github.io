@@ -43,11 +43,22 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Navigation */
+/* Particle background canvas */
+#particle-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Navigation — semi-transparent over particles */
 nav {
   position: sticky;
   top: 0;
-  background: var(--bg);
+  background: rgba(250, 249, 246, 0.85);
   border-bottom: 1px solid var(--border);
   z-index: 100;
   padding: 0 2rem;
@@ -109,18 +120,28 @@ nav {
   transition: transform 0.3s, opacity 0.3s;
 }
 
-/* Main content */
+/* Main content — card over particles */
 main {
   flex: 1;
   max-width: var(--max-width);
-  margin: 0 auto;
+  width: calc(100% - 2rem);
+  margin: 1.5rem auto;
   padding: 3rem 2rem;
-  width: 100%;
+  background: var(--bg);
+  border-radius: 6px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero (home page) */
 .hero {
   padding: 2rem 0 1rem;
+}
+
+.hero-photo {
+  width: 160px;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
 }
 
 .hero h1 {
@@ -326,13 +347,16 @@ p:last-child {
   text-decoration: none;
 }
 
-/* Footer */
+/* Footer — solid over particles */
 footer {
+  background: var(--bg);
   border-top: 1px solid var(--border);
   padding: 1.5rem 2rem;
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
 }
 
 /* Responsive */
@@ -347,7 +371,7 @@ footer {
     top: var(--nav-height);
     left: 0;
     right: 0;
-    background: var(--bg);
+    background: rgba(250, 249, 246, 0.92);
     flex-direction: column;
     padding: 1rem 2rem 1.5rem;
     border-bottom: 1px solid var(--border);
@@ -360,6 +384,9 @@ footer {
 
   main {
     padding: 2rem 1.5rem;
+    margin: 1rem auto;
+    width: calc(100% - 1.5rem);
+    border-radius: 4px;
   }
 
   .hero h1 {

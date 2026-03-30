@@ -12,62 +12,66 @@ Rebuilt from Google Sites with a custom static site.
 - **Theme**: Light cream/off-white (`#FAF9F6`), minimal & clean
 - **Font**: Inter (sans-serif), 15px base, line-height 1.7
 - **Colors**: `--text: #1a1a1a`, `--text-secondary: #555`, `--accent: #3a6b8a`
-- **Layout**: Max-width 700px, sticky nav, responsive hamburger menu at 640px
-- **Content**: Ported verbatim from the original Google Sites page
+- **Layout**: Max-width 700px content card, sticky semi-transparent nav, responsive hamburger menu at 640px
+- **Background**: Live Bohemian eigenvalue particle animation on all pages
+- **Content card**: Solid cream (`#FAF9F6`) with `border-radius: 6px`, flat (no shadow/border)
+- **Nav**: Semi-transparent (`rgba(250, 249, 246, 0.85)`) — particles visible behind
+- **Footer**: Solid cream, full-width
 
 ## File Structure
 ```
 /
-├── index.html              # Home — hero intro + social links (GitHub, Email, LinkedIn)
-├── about.html              # Bio, background, CV download, social links
+├── index.html              # Home — photo, bio, CV download, social links (merged Home + About)
 ├── collaboration.html      # 3 projects: Open Working Hours, Tinge, Level Ethics
 ├── publications.html       # 5 publications + Google Scholar link
-├── dphil-proposal.html     # Embedded PDF of DPhil proposal
 ├── contact.html            # Email + social icons (centered, icon-only)
+├── about.html              # Redirect → / (kept for old bookmarks)
+├── dphil-proposal.html     # Embedded PDF (unlisted — not in nav, linked from home)
 ├── css/style.css           # All styles
+├── js/
+│   ├── particles.js        # Particle background system (self-contained IIFE)
+│   └── eigen-worker.js     # Web Worker for live eigenvalue computation
 ├── assets/
+│   ├── lukashondrich.png   # Talk photo (hero image)
 │   ├── Lukas_Hondrich_CV-57-1.pdf
 │   ├── DPhil_Proposal.pdf
 │   ├── owh/                # Open Working Hours screenshots (3 PNGs)
 │   └── tinge/              # Tinge screenshots (2 PNGs)
-├── experiments/            # Phase 2 particle system prototypes
-│   ├── eigen-worker.js     # Web Worker for live eigenvalue computation
-│   ├── still-9-bohemian-live.html  # CHOSEN prototype — live Bohemian eigenvalues
-│   ├── still-1-perlin.html         # Experiment: Perlin noise blobs
-│   ├── still-2-fractal.html        # Experiment: Layered fractal noise
-│   ├── still-3-tendrils.html       # Experiment: Flowing tendrils
-│   ├── still-4-splatter.html       # Experiment: Clustered splatter
-│   ├── still-5-voronoi.html        # Experiment: Voronoi cells
-│   ├── still-6-cloud.html          # Experiment: Gradient cloud
-│   ├── still-7-bohemian.html       # Experiment: Static Bohemian eigenvalues
-│   └── still-8-bohemian-animated.html  # Experiment: Pre-computed animation
+├── .gitignore
 └── CLAUDE.md
 ```
 
-## Phase 1: Static Site — COMPLETE
-All 6 pages built with content matching the original Google Sites.
-Nav, responsive layout, social links, PDF embeds all working.
+## Navigation
+Home | Collaboration | Publications | Contact
 
-## Phase 2: Particle Background — IN PROGRESS
-### Chosen approach: Bohemian matrix eigenvalues (still-9-bohemian-live.html)
+## Particle Background — INTEGRATED
+### Approach: Bohemian matrix eigenvalues
 Based on Lukas's research repo: github.com/lukashondrich/sampling_bohemian_matrices
 
 **How it works:**
-- Web Worker (`eigen-worker.js`) computes 5×5 complex matrix eigenvalues live
+- Web Worker (`js/eigen-worker.js`) computes 5×5 complex matrix eigenvalues live
 - 3 matrices interpolated in a cycle (matrix_0 → matrix_1 → matrix_2 → repeat)
 - Two diagonal entries perturbed with random unit-circle samples
 - Eigenvalue positions become dot coordinates on screen
 - Each dot has individual lifecycle: fade in → hold → fade out → die
 - New dots spawn at current interpolation alpha — shape slowly morphs
 - Zero data download, all computed in browser
+- `js/particles.js` creates a fixed fullscreen canvas (`z-index: 0`) behind all content
 
-**Current tuned parameters (user-adjusted):**
+**Integration:**
+- Canvas is inserted as first child of `<body>` by `particles.js`
+- All pages load `<script src="js/particles.js"></script>` before `</body>`
+- Content card (`<main>`) has solid background, sits above canvas (`z-index: 1`)
+- Nav is semi-transparent so particles bleed through
+
+**Current tuned parameters:**
 ```
 dotSize: 0.3, dotSizeVariance: 0.9
 dotColor: [150, 125, 115], dotOpacityMax: 0.99
-maxParticles: 80000, lifetimeMin: 12, lifetimeMax: 27
+maxParticles: 80000 (mobile: 20000)
+lifetimeMin: 12, lifetimeMax: 27
 fadeInRatio: 0.12, fadeOutRatio: 0.2
-initialBatch: 15000, tickleBatch: 1000, tickleInterval: 100ms
+initialBatch: 15000 (mobile: 4000), tickleBatch: 1000 (mobile: 300), tickleInterval: 100ms
 zoom: 4, cycleDuration: 180s
 ```
 
@@ -75,13 +79,6 @@ zoom: 4, cycleDuration: 180s
 - maxParticles: ~100,000 (canvas rendering limit)
 - initialBatch: ~20,000 (Worker compute time ~5s)
 - tickleBatch: ~1000 per 100ms tick
-
-### Next steps
-1. Integrate particle canvas into the main site pages as a background layer
-2. Add solid background behind text content so readability is preserved
-3. Test on mobile devices
-4. Clean up experiments/ folder (remove unused stills)
-5. Content improvements (user to decide later)
 
 ## External Links
 - GitHub: https://github.com/lukashondrich
