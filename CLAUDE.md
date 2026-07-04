@@ -33,7 +33,7 @@ Rebuilt from Google Sites with a custom static site.
 │   └── eigen-worker.js     # Web Worker for live eigenvalue computation
 ├── assets/
 │   ├── lukashondrich.png   # Talk photo (hero image)
-│   ├── Lukas_Hondrich_CV-57-1.pdf
+│   ├── Lukas_Hondrich_CV.pdf
 │   ├── DPhil_Proposal.pdf
 │   ├── owh/                # Open Working Hours screenshots (3 PNGs)
 │   └── tinge/              # Tinge screenshots (2 PNGs)

@@ -24,7 +24,20 @@
 
   <main>
     <h1>Collaboration</h1>
-    <p>Areas I'm actively exploring and open to developing with others.</p>
+
+    <div class="project">
+      <h2>Trustworthy AI for Patient &amp; Health Information</h2>
+      <p>Building and evaluating AI systems that give patients reliable, well-sourced health information with clear safety boundaries, developed in partnership with the organisations closest to patients.</p>
+      <p><a href="https://medhealth-assistant-production.up.railway.app/" target="_blank" rel="noopener"><strong>MedGraph</strong></a> is an interactive demo of a multi-agent health assistant: it answers patient questions with responses grounded in clinical guidelines (ADA, NICE, WHO, Cochrane), screens medications against FDA interaction data (OpenFDA labels and adverse-event reports), and attaches inline citations with source-confidence tiers. Built-in safety boundaries refuse diagnosis, prescription, and dose changes, and escalate emergencies. It runs open models locally with a vLLM/GPU deployment path, is WCAG-accessible, and ships with an evaluation harness grounded in public NLM medical benchmarks (LiveQA, MedicationQA, and an adversarial safety set).</p>
+      <div class="project-images">
+        <img src="assets/medgraph/patient-safety.png" alt="MedGraph — patient profile selected, with an on-screen disclaimer stating the assistant cannot diagnose or prescribe">
+        <img src="assets/medgraph/agent-pipeline.png" alt="MedGraph — a medication question routed through the multi-agent pipeline (routing, medication, and drug-check agents)">
+        <img src="assets/medgraph/cited-answer.png" alt="MedGraph — final response with a drug-interaction warning, an urgent-care recommendation, and inline source citations">
+      </div>
+      <p class="tech">Built with LangGraph multi-agent orchestration, Qdrant retrieval, and an OpenFDA tool layer. An architecture and evaluation proof rather than a deployed product.</p>
+      <p>A related evaluation I ran, <em>LLMs Systematically Omit Safety-Critical Medical Information for Non-Expert Audiences</em>, found that large language models systematically omit safety-critical information when answering non-expert audiences, i.e. patients. (<a href="https://lukashondrich.com/oversight_eval/poster.html" target="_blank" rel="noopener">Working paper</a>)</p>
+      <p>The direction I care most about, and have published on, is building these systems <em>with</em> patient-led organisations from the start.</p>
+    </div>
 
     <div class="project">
       <h2>Evidence Infrastructures for Working Conditions (Privacy-Preserving Measurement)</h2>
