@@ -21,7 +21,7 @@ Rebuilt from Google Sites with a custom static site.
 ## File Structure
 ```
 /
-├── index.html              # Home — photo, bio, CV download, social links (merged Home + About)
+├── index.html              # Home — photo, 5-paragraph bio (see Home Bio below), CV download, social links
 ├── collaboration.html      # 3 projects: Open Working Hours, Tinge, Level Ethics
 ├── publications.html       # 5 publications + Google Scholar link
 ├── contact.html            # Email + social icons (centered, icon-only)
@@ -40,6 +40,17 @@ Rebuilt from Google Sites with a custom static site.
 ├── .gitignore
 └── CLAUDE.md
 ```
+
+## Home Bio (index.html)
+Framed for Open Working Hours partners and consulting clients, not job applications.
+Spine: evaluation, oversight and governance of AI systems; "builds things" angle.
+1. Hero — professional summary (AI engineer & researcher; LLM evaluation/safety tooling + research)
+2. Now — independent AI engineering/consulting in Berlin *and* Open Working Hours, equal weight;
+   partner call-out (hospitals, unions/works councils, researchers); link goes to openworkinghours.org
+3. Before — Cornelsen (eval platform), then Hagen / Charité / AlgorithmWatch, background line
+4. DPhil — dated "In 2023", admission only, no funding explanation; links to proposal PDF
+5. Closing — open to consulting + collaborations on AI evaluation/safety, and OWH conversations
+Language tutor / Tinge deliberately **not** in the bio (lives on collaboration.html).
 
 ## Navigation
 Home | Collaboration | Publications | Contact
