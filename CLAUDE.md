@@ -32,7 +32,7 @@ Rebuilt from Google Sites with a custom static site.
 │   ├── particles.js        # Particle background system (self-contained IIFE)
 │   └── eigen-worker.js     # Web Worker for live eigenvalue computation
 ├── assets/
-│   ├── lukashondrich.png   # Talk photo (hero image)
+│   ├── lukashondrich.jpg   # Hero photo (head-and-shoulders crop, 640px)
 │   ├── Lukas_Hondrich_CV.pdf
 │   ├── DPhil_Proposal.pdf
 │   ├── owh/                # Open Working Hours screenshots (3 PNGs)
