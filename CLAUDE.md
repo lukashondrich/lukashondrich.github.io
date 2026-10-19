@@ -48,7 +48,7 @@ Spine: evaluation, oversight and governance of AI systems; "builds things" angle
 2. Now — independent AI engineering/consulting in Berlin *and* Open Working Hours, equal weight;
    partner call-out (hospitals, unions/works councils, researchers); link goes to openworkinghours.org
 3. Before — Cornelsen (eval platform), then Hagen / Charité / AlgorithmWatch, background line
-4. DPhil — dated "In 2023", admission only, no funding explanation; links to proposal PDF
+4. DPhil — dated "In 2023", "offered a place" (not admitted/enrolled), no funding explanation; links to proposal PDF
 5. Closing — open to consulting + collaborations on AI evaluation/safety, and OWH conversations
 Language tutor / Tinge deliberately **not** in the bio (lives on collaboration.html).
 
